@@ -1,0 +1,23 @@
+find_paths:
+  description: >
+    "
+    Analyse the market trends and suggest potential career paths based on the following information of students:
+
+      - Current Scenario
+      - Degree
+      - Skills
+      - Living Place
+      - Expectations
+      - Goals
+
+    The paths might include potential degree, skills that the students need to acquire, potential career paths that the students can explore and much more which can benifit the student
+    "
+  expected_output: "A list of potential career paths that the student can explore"
+
+analyse_jobs:
+  description: "Analyse the job market and suggest the student jobs based on their current scenario"
+  expected_output: "A list of potential jobs that the student can explore"
+
+create_pathway:
+  description: "Create a detailed report of pathway for the student based on the data provided by Career Path Suggestor and Job Finder"
+  expected_output: "A detailed report of pathway for the student based on the data provided by Career Path Suggestor and Job Finder"
