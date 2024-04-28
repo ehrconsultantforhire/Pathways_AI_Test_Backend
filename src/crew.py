@@ -31,7 +31,13 @@ def run_crew(input: str):
     final_report_build = tasks.final_report_compiler(
         final_report_writer,
         prompt=input,
-        context=[pathway, current_resume_builder, future_resume_builder],
+        context=[
+            find_paths,
+            analyse_jobs,
+            pathway,
+            current_resume_builder,
+            future_resume_builder,
+        ],
     )
 
     # Crew

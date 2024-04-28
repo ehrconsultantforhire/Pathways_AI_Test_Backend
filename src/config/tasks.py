@@ -75,7 +75,7 @@ class PathwayGenaratorTask:
 
                 Student input: {prompt}
 
-                IMPORTANT: The resume should highlight the current set of skills that the student has and also the skills
+                IMPORTANT: The resume should highlight the current set of skills that the student has
                 """
             ),
             expected_output="A sample resume of the student in markdown format",
@@ -93,7 +93,14 @@ class PathwayGenaratorTask:
                 Student input: {prompt}
 
                 INSTRUCTIONS:
-                Replace the <...> with the data provided by the other agents
+                - Replace the <...> with the data provided by the other agents
+                - There should be one resume for each detailed pathway
+                - If some sections don't have content in them then exclude it
+
+                IMPORTANT:
+                - Use the exact format for headings and sections given below
+                - For each pathway there must be a potential resume
+                - Don't show the resume in code blocks format of markdown
 
                 REPORT FORMAT:
                 # Student Analysis
@@ -101,20 +108,29 @@ class PathwayGenaratorTask:
                 ## Current Position
                 <describe about the current situation of the student>
 
+                ## Jobs
+                <jobs where she can apply>
+
                 ## Sample Resume
                 <Write the sample resume for the student>
 
                 # Pathways
 
-                <write the pathways that the student can follow>
-                
-                ## Final Resume
+                ## <Pathway 1>:
+                <Write the pathway for the student (REQUIRED) >
+                ## Sample Resume for <pathway 1>
+                <Write the sample resume for the student if the student follows the pathway>
 
-                <Final resume of what the student will become>
+                ## <Pathway 2>:
+                <Write the pathway for the student (REQUIRED)>
+                ## Sample Resume for <pathway 2>
+                <Write the sample resume for the student if the student follows the pathway>
                 
+                ## <Pathway 3>:
+                .... and so on
                 """
             ),
-            expected_output="A detailed report of pathway for the student in markdown format",
+            expected_output="A detailed report of pathway with sample resumes in markdown format",
             agent=agent,
             context=context,
         )
