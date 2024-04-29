@@ -20,9 +20,9 @@ def handle_route():
 
     if prompt:
         processed_text = run_crew(prompt)
-        f = open("output.md", "w")
-        f.write(processed_text)
-        f.close()
+        # f = open("output.md", "w")
+        # f.write(processed_text)
+        # f.close()
         return jsonify({"response": processed_text, "success": True}), 200
     else:
         # Handle missing prompt error
