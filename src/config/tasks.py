@@ -98,13 +98,13 @@ class PathwayGenaratorTask:
                 - If some sections don't have content in them then exclude it
 
                 IMPORTANT:
-                - Use the exact format for headings and sections given below
+                - Use the exact format for headings and sections given below (VVI)
                 - For each pathway there must be a potential resume
                 - Don't show the resume in code blocks format of markdown
+                - The "Pathways" and "Student Analysis" must be an h1
 
                 REPORT FORMAT:
-                # Student Analysis
-
+                
                 ## Current Position
                 <describe about the current situation of the student>
 
@@ -116,21 +116,23 @@ class PathwayGenaratorTask:
 
                 # Pathways
 
-                ## <Pathway 1>:
+                ## <Pathway_1_Name>:
                 <Write the pathway for the student (REQUIRED) >
-                ## Sample Resume for <pathway 1>
+
+                ## Sample Resume for <pathway_1_name>
                 <Write the sample resume for the student if the student follows the pathway>
 
-                ## <Pathway 2>:
+                ## <Pathway_2_Name>:
                 <Write the pathway for the student (REQUIRED)>
-                ## Sample Resume for <pathway 2>
+
+                ## Sample Resume for <pathway_2_name>
                 <Write the sample resume for the student if the student follows the pathway>
                 
-                ## <Pathway 3>:
+                ## <Pathway_3_Name>:
                 .... and so on
                 """
             ),
-            expected_output="A detailed report of pathway with sample resumes in markdown format",
+            expected_output="A detailed report of pathway with sample resume in markdown format",
             agent=agent,
             context=context,
         )
