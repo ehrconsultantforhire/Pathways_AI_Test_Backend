@@ -71,14 +71,14 @@ class PathwayGenaratorTask:
         return Task(
             description=dedent(
                 f"""
-                Create a sample resume of the student based on the student's future position if he follows the pathway
+                For each pathway, generate a sample resume for the student
 
                 Student input: {prompt}
 
                 IMPORTANT: The resume should highlight the current set of skills that the student has
                 """
             ),
-            expected_output="A sample resume of the student in markdown format",
+            expected_output="A sample resume of the student in markdown format (must not be in code blocks)",
             agent=agent,
             context=context,
         )
@@ -100,8 +100,11 @@ class PathwayGenaratorTask:
                 IMPORTANT:
                 - Use the exact format for headings and sections given below (VVI)
                 - For each pathway there must be a potential resume
-                - Don't show the resume in code blocks format of markdown
-                - The "Pathways" and "Student Analysis" must be an h1
+                - The resume section must not be in code blocks
+
+                NOTE:
+                - If you don't include resume then your whole salary would be gone
+                - If you render resume section in code block then you would be fired from the job
 
                 REPORT FORMAT:
                 
@@ -132,7 +135,43 @@ class PathwayGenaratorTask:
                 .... and so on
                 """
             ),
-            expected_output="A detailed report of pathway with sample resume in markdown format",
+            expected_output=dedent(
+                """
+
+                A report in markdown format in the following sample format:
+
+                IMPORTANT:
+                - Replace the <...> with the data provided by the other agents
+                - The <Pathway_1_Name> should be replaced with only the pathwaty title
+                - The resume must not be in code block
+
+                ## Current Position
+                <describe about the current situation of the student>
+
+                ## Jobs
+                <jobs where she can apply>
+
+                ## Sample Resume
+                <Write the sample resume for the student>
+
+                # Pathways
+
+                ## <Pathway_1_Name>:
+                <Write the pathway for the student (REQUIRED) >
+
+                ## Sample Resume for <pathway_1_name>
+                <Write the sample resume for the student if the student follows the pathway>
+
+                ## <Pathway_2_Name>:
+                <Write the pathway for the student (REQUIRED)>
+
+                ## Sample Resume for <pathway_2_name>
+                <Write the sample resume for the student if the student follows the pathway>
+                
+                ## <Pathway_3_Name>:
+                .... and so on
+                """
+            ),
             agent=agent,
             context=context,
         )
